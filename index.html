@@ -222,6 +222,55 @@
             animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
         }
+
+        /* Featured article card */
+        .featured-card {
+            background: linear-gradient(135deg, rgba(24, 24, 27, 0.9) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.18);
+            border-radius: 20px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 40px rgba(16, 185, 129, 0.08);
+        }
+
+        /* Reading time badge */
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(16, 185, 129, 0.1);
+            color: #6ee7b7;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.2rem 0.65rem;
+            border-radius: 9999px;
+            letter-spacing: 0.03em;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 60%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero decorative rule */
+        .hero-rule {
+            width: 3rem;
+            height: 2px;
+            background: linear-gradient(to right, #10b981, transparent);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Page transitions */
+        .page-section {
+            transition: opacity 0.22s ease;
+        }
     </style>
 </head>
 
@@ -267,56 +316,76 @@
 
         <!-- Main Content -->
         <main class="flex-grow">
-            <!-- Home Page (Random 5) -->
-            <div id="page-home">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-                    <div class="flex justify-end mb-8 space-x-4">
-                        <button id="refresh-reads-btn"
-                            class="bg-zinc-800 text-zinc-300 border border-white/10 px-6 py-2 rounded-md hover:bg-zinc-700 hover:text-white custom-focus-ring transition-all-smooth flex items-center justify-center space-x-2 shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span>Refresh My Reads</span>
-                        </button>
-                        <button id="random-read-btn"
-                            class="accent-bg text-white px-6 py-2 rounded-md accent-bg-hover custom-focus-ring transition-all-smooth flex items-center justify-center space-x-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span>Surprise Me</span>
-                        </button>
-                    </div>
-                    <!-- Hero -->
-                    <div class="mb-14 pt-2">
-                        <p class="text-emerald-500 text-xs font-semibold uppercase tracking-widest mb-5 font-ui">Curated Reading</p>
-                        <h2 class="font-serif text-5xl sm:text-6xl font-bold text-zinc-100 mb-5 leading-tight tracking-tight">
-                            Ideas worth<br><em class="not-italic accent-color">reading twice.</em>
-                        </h2>
-                        <p class="text-zinc-400 text-lg mb-8 max-w-2xl leading-relaxed">
-                            Not the trending, not the ephemeral. Hand-picked essays and stories that earn their place in your memory.
-                        </p>
-                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-500">
-                            <span><span class="text-zinc-200 font-semibold" id="stat-count">—</span> articles</span>
-                            <span class="w-1 h-1 rounded-full bg-zinc-700"></span>
-                            <span><span class="text-zinc-200 font-semibold" id="stat-hours">—</span> hrs of reading</span>
-                            <span class="w-1 h-1 rounded-full bg-zinc-700"></span>
-                            <span><span class="text-zinc-200 font-semibold" id="stat-topics">—</span> topics</span>
+            <!-- Home Page -->
+            <div id="page-home" class="page-section">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+
+                    <!-- Refined Hero -->
+                    <div class="mb-16 relative overflow-hidden">
+                        <!-- Watermark -->
+                        <div class="absolute -top-2 -right-4 select-none pointer-events-none" aria-hidden="true">
+                            <span class="font-serif font-bold leading-none text-white/[0.022]" style="font-size: 11rem; letter-spacing: -0.04em;">READ</span>
+                        </div>
+
+                        <div class="relative z-10">
+                            <p class="text-emerald-500 text-xs font-bold uppercase tracking-[0.2em] mb-6 font-ui flex items-center gap-3">
+                                <span class="w-8 h-px bg-emerald-500 block"></span>
+                                Curated Reading
+                            </p>
+                            <h2 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-zinc-100 mb-5 leading-[1.05] tracking-tight">
+                                Ideas worth<br>
+                                <em class="not-italic gradient-text">reading twice.</em>
+                            </h2>
+                            <div class="hero-rule"></div>
+                            <p class="text-zinc-400 text-lg mb-8 max-w-xl leading-relaxed">
+                                Not the trending, not the ephemeral. Hand-picked essays and stories that earn a place in your memory.
+                            </p>
+                            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-600">
+                                <span><span class="text-zinc-300 font-semibold" id="stat-count">—</span> articles</span>
+                                <span class="w-1 h-1 rounded-full bg-zinc-800"></span>
+                                <span><span class="text-zinc-300 font-semibold" id="stat-hours">—</span> hrs of reading</span>
+                                <span class="w-1 h-1 rounded-full bg-zinc-800"></span>
+                                <span><span class="text-zinc-300 font-semibold" id="stat-topics">—</span> topics</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="home-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    <!-- Section label + action buttons -->
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="flex items-center gap-3">
+                            <span class="w-5 h-px bg-zinc-700 block"></span>
+                            <span class="text-xs font-bold text-zinc-500 uppercase tracking-[0.15em] font-ui">Today's Reads</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button id="refresh-reads-btn"
+                                class="flex items-center gap-2 text-sm text-zinc-400 border border-white/8 bg-zinc-900/60 px-4 py-2 rounded-md hover:text-zinc-200 hover:border-white/15 transition-all-smooth font-ui">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                                </svg>
+                                Refresh
+                            </button>
+                            <button id="random-read-btn"
+                                class="flex items-center gap-2 text-sm text-black font-semibold accent-bg px-4 py-2 rounded-md accent-bg-hover transition-all-smooth font-ui">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Surprise Me
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Featured article -->
+                    <div id="featured-article" class="mb-8"></div>
+
+                    <!-- Regular 2×2 grid -->
+                    <div id="home-articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-7"></div>
+
                 </div>
             </div>
 
             <!-- Explore/Filtered Page -->
-            <div id="page-explore" class="hidden">
+            <div id="page-explore" class="hidden page-section">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
                     <h2 id="explore-title" class="text-3xl font-bold text-zinc-100 mb-6 font-serif">The Archive of Good Reading</h2>
 
@@ -352,7 +421,7 @@
             </div>
 
             <!-- About Page -->
-            <div id="page-about" class="hidden">
+            <div id="page-about" class="hidden page-section">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
                     <div class="glass-card p-10 prose prose-style prose-lg text-zinc-400 font-serif">
                         <h2 class="text-4xl font-bold text-zinc-100 mb-6 font-serif tracking-tight">About This
@@ -376,7 +445,7 @@
             </div>
 
             <!-- Saved Page -->
-            <div id="page-saved" class="hidden">
+            <div id="page-saved" class="hidden page-section">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
                     <h2 class="text-3xl font-bold text-zinc-100 mb-2 font-serif">Saved Articles</h2>
                     <p class="text-zinc-500 text-sm mb-10">Your personal reading list, stored locally in your browser.</p>
@@ -590,11 +659,11 @@
                     articleCard.style.animationDelay = `${index * 0.07}s`;
 
                     const topicTagsHTML = (article.tags || []).map(tag =>
-                        `<button class="tag-button text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full font-ui" data-tag="${tag}">${tag}</button>`
+                        `<button class="tag-button text-xs font-medium mr-1.5 mb-1.5 px-2.5 py-0.5 rounded-full font-ui" data-tag="${tag}">${tag}</button>`
                     ).join('');
 
                     const moodTagsHTML = (article.moodTags || []).map(tag =>
-                        `<button class="tag-button mood-tag-button text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full font-ui" data-tag="${tag}">${tag}</button>`
+                        `<button class="tag-button mood-tag-button text-xs font-medium mr-1.5 mb-1.5 px-2.5 py-0.5 rounded-full font-ui" data-tag="${tag}">${tag}</button>`
                     ).join('');
 
                     const readingTime = Math.ceil(article.wordCount / 225);
@@ -602,33 +671,100 @@
 
                     articleCard.innerHTML = `
                         <div class="flex-grow">
-                            <p class="text-sm text-zinc-400 mb-2 font-ui flex items-center gap-2">
-                                <span>${article.source}</span>
-                                <span class="w-1 h-1 rounded-full bg-zinc-600"></span>
-                                <span>${article.year}</span>
-                                <span class="w-1 h-1 rounded-full bg-zinc-600"></span>
-                                <span><span class="text-emerald-500">⏱</span> ${readingTime} min read</span>
-                            </p>
-                            <h2 class="text-xl font-bold text-zinc-100 mb-3 font-serif leading-tight">${article.title}</h2>
-                            <p class="text-base mb-5 leading-relaxed text-zinc-400 font-serif">${article.summary}</p>
-                        </div>
-                        <div class="mt-auto pt-5 border-t border-white/5">
-                            <div class="flex flex-wrap mb-4 gap-y-2">${topicTagsHTML}${moodTagsHTML}</div>
-                            <div class="flex justify-between items-center mt-2">
-                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-500 hover:text-emerald-400 font-ui transition-colors">
-                                    Read Full Article
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                                </a>
-                                <button class="bookmark-btn p-1.5 rounded-md hover:bg-white/5 transition-colors ${isBookmarked ? 'text-emerald-500' : 'text-zinc-600'}" data-id="${article.id}" title="${isBookmarked ? 'Remove from saved' : 'Save for later'}">
+                            <!-- Top row: reading time badge + bookmark -->
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="time-badge">${readingTime} min read</span>
+                                <button class="bookmark-btn p-1 rounded-md hover:bg-white/5 transition-colors ${isBookmarked ? 'text-emerald-500' : 'text-zinc-600'}" data-id="${article.id}" title="${isBookmarked ? 'Remove from saved' : 'Save for later'}">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="${isBookmarked ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-5-7 5V5z" />
                                     </svg>
                                 </button>
                             </div>
+                            <!-- Title -->
+                            <h2 class="text-xl font-bold text-zinc-100 mb-2 font-serif leading-snug">${article.title}</h2>
+                            <!-- Author byline -->
+                            <p class="text-xs text-zinc-600 mb-4 font-ui flex items-center flex-wrap gap-x-1.5">
+                                <span>by</span>
+                                <span class="text-zinc-400 font-semibold">${article.author}</span>
+                                <span class="text-zinc-700">·</span>
+                                <span>${article.source}</span>
+                                <span class="text-zinc-700">·</span>
+                                <span>${article.year}</span>
+                            </p>
+                            <!-- Summary -->
+                            <p class="text-sm leading-relaxed text-zinc-400 font-serif">${article.summary}</p>
+                        </div>
+                        <div class="mt-auto pt-5 border-t border-white/5 mt-5">
+                            <div class="flex flex-wrap mb-4">${topicTagsHTML}${moodTagsHTML}</div>
+                            <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-500 hover:text-emerald-400 font-ui transition-colors">
+                                Read Full Article
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                            </a>
                         </div>
                     `;
                     gridContainer.appendChild(articleCard);
                 });
+            }
+
+            function renderFeaturedArticle(article) {
+                const featuredContainer = document.getElementById('featured-article');
+                if (!article) { featuredContainer.innerHTML = ''; return; }
+
+                const readingTime = Math.ceil(article.wordCount / 225);
+                const isBookmarked = savedIds.has(article.id);
+
+                featuredContainer.innerHTML = `
+                    <div class="featured-card p-8 sm:p-12 relative overflow-hidden animate-enter">
+                        <!-- Glow blob -->
+                        <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(16,185,129,0.07) 0%, transparent 70%);"></div>
+                        <!-- Decorative year watermark -->
+                        <div class="absolute bottom-6 right-10 font-serif font-bold select-none pointer-events-none leading-none text-white/[0.04]" style="font-size: 8rem;">${article.year}</div>
+
+                        <div class="relative z-10">
+                            <!-- Label + bookmark row -->
+                            <div class="flex items-center justify-between mb-8">
+                                <span class="inline-flex items-center gap-3 text-emerald-500 text-xs font-bold uppercase tracking-[0.18em] font-ui">
+                                    <span class="w-8 h-px bg-emerald-500 block flex-shrink-0"></span>
+                                    Editor's Pick
+                                </span>
+                                <button class="bookmark-btn p-2 rounded-md hover:bg-white/5 transition-colors ${isBookmarked ? 'text-emerald-500' : 'text-zinc-600'}" data-id="${article.id}" title="${isBookmarked ? 'Remove from saved' : 'Save for later'}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="${isBookmarked ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-5-7 5V5z" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Title -->
+                            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-5 leading-tight tracking-tight max-w-3xl">
+                                ${article.title}
+                            </h2>
+
+                            <!-- Byline -->
+                            <p class="text-sm text-zinc-500 mb-6 font-ui flex items-center flex-wrap gap-x-2 gap-y-1">
+                                <span>by</span>
+                                <span class="text-zinc-300 font-semibold">${article.author}</span>
+                                <span class="text-zinc-700">·</span>
+                                <span>${article.source}</span>
+                                <span class="text-zinc-700">·</span>
+                                <span class="time-badge">${readingTime} min read</span>
+                            </p>
+
+                            <!-- Summary -->
+                            <p class="text-zinc-400 text-lg leading-relaxed mb-9 max-w-2xl font-serif">
+                                ${article.summary}
+                            </p>
+
+                            <!-- CTA -->
+                            <a href="${article.url}" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2.5 text-black font-bold text-sm px-7 py-3 rounded-md transition-all-smooth accent-bg accent-bg-hover">
+                                Read Full Article
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                `;
             }
 
             function renderSavedPage() {
@@ -650,7 +786,8 @@
 
             function displayRandomArticles() {
                 const shuffled = [...allArticles].sort(() => 0.5 - Math.random());
-                renderArticles(shuffled.slice(0, 5), homeArticlesGrid);
+                renderFeaturedArticle(shuffled[0]);
+                renderArticles(shuffled.slice(1, 5), homeArticlesGrid);
             }
 
             function openRandomRead() {
@@ -730,27 +867,40 @@
             }
 
             function switchPage(pageName) {
-                pageHome.classList.add('hidden');
-                pageExplore.classList.add('hidden');
-                pageAbout.classList.add('hidden');
-                pageSaved.classList.add('hidden');
-                [navHome, navExplore, navAbout, navSaved].forEach(nav => nav.classList.remove('active'));
+                const pageMap = { home: pageHome, explore: pageExplore, about: pageAbout, saved: pageSaved };
+                const navMap  = { home: navHome,  explore: navExplore,  about: navAbout,  saved: navSaved  };
 
-                if (pageName === 'explore') {
-                    pageExplore.classList.remove('hidden');
-                    navExplore.classList.add('active');
-                } else if (pageName === 'about') {
-                    pageAbout.classList.remove('hidden');
-                    navAbout.classList.add('active');
-                } else if (pageName === 'saved') {
-                    pageSaved.classList.remove('hidden');
-                    navSaved.classList.add('active');
-                    renderSavedPage();
-                } else {
-                    pageHome.classList.remove('hidden');
-                    navHome.classList.add('active');
+                const currentPage = Object.values(pageMap).find(p => !p.classList.contains('hidden'));
+                const targetPage  = pageMap[pageName] || pageHome;
+                const targetNav   = navMap[pageName]  || navHome;
+
+                // Update nav active state immediately
+                [navHome, navExplore, navAbout, navSaved].forEach(n => n.classList.remove('active'));
+                targetNav.classList.add('active');
+
+                // Run page-specific setup before showing
+                if (pageName === 'saved') renderSavedPage();
+
+                if (currentPage && currentPage !== targetPage) {
+                    // Fade out current
+                    currentPage.style.opacity = '0';
+                    setTimeout(() => {
+                        currentPage.classList.add('hidden');
+                        currentPage.style.opacity = '';
+
+                        // Fade in target
+                        targetPage.style.opacity = '0';
+                        targetPage.classList.remove('hidden');
+                        requestAnimationFrame(() => requestAnimationFrame(() => {
+                            targetPage.style.opacity = '1';
+                            setTimeout(() => { targetPage.style.opacity = ''; }, 240);
+                        }));
+                    }, 200);
+                } else if (!currentPage) {
+                    targetPage.classList.remove('hidden');
                 }
-                window.scrollTo(0, 0);
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
             function openModal() { suggestionModal.classList.remove('hidden'); }
