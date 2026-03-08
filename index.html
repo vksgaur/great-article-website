@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Articles to Read | A Curated Collection</title>
+
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Playfair Display (serif) & Inter (sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Custom styles for Premium Dark Mode */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            /* Deep slate background */
+            color: #fafafa;
+            /* Off-white text */
+            transition: background-color 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-ui {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .prose-style {
+            max-width: 45em;
+            color: #a1a1aa;
+            /* Soft gray for prose */
+        }
+
+        .prose-style h2,
+        .prose-style h3 {
+            color: #fafafa;
+        }
+
+        .custom-focus-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4);
+            /* Emerald focus ring */
+        }
+
+        .transition-all-smooth {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Accent color classes: Emerald / Indigo mix */
+        .accent-color {
+            color: #10b981;
+            /* Emerald-500 */
+        }
+
+        .accent-bg {
+            background-color: #10b981;
+        }
+
+        .accent-bg-hover:hover {
+            background-color: #059669;
+            /* Emerald-600 */
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.39);
+        }
+
+        /* Glassmorphic Cards */
+        .glass-card {
+            background: rgba(24, 24, 27, 0.6);
+            /* Zinc-900 with opacity */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.1);
+        }
+
+        /* Glowing Pill Tags */
+        .tag-button {
+            background-color: rgba(39, 39, 42, 0.8);
+            /* Zinc-800 */
+            color: #d4d4d8;
+            /* Zinc-300 */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .tag-button:hover {
+            background-color: rgba(16, 185, 129, 0.15);
+            /* Tinted background on hover */
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.3);
+            text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+        }
+
+        .mood-tag-button:hover {
+            background-color: rgba(99, 102, 241, 0.15);
+            /* Indigo tint for mood tags */
+            color: #818cf8;
+            border-color: rgba(99, 102, 241, 0.3);
+            text-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Filter Button Styles */
+        .filter-btn {
+            background-color: rgba(39, 39, 42, 0.6);
+            color: #a1a1aa;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(63, 63, 70, 0.8);
+            color: #fafafa;
+        }
+
+        .filter-btn.active {
+            background-color: #10b981;
+            color: #09090b;
+            font-weight: 600;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Nav Link Hover */
+        .nav-link {
+            position: relative;
+            color: #a1a1aa;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #10b981;
+            transition: width 0.3s ease;
+            -webkit-transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+            left: 0;
+            background: #10b981;
+        }
+
+        .nav-link.active {
+            color: #fafafa;
+        }
+
+        .nav-link:hover {
+            color: #fafafa;
+        }
+
+        /* Modal styles */
+        .modal-backdrop {
+            transition: opacity 0.3s ease;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            transition: transform 0.3s ease;
+            background: #18181b;
+            /* Zinc-900 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Form inputs in dark mode */
+        input[type="url"],
+        input[type="text"],
+        textarea {
+            background-color: #27272a;
+            border-color: #3f3f46;
+            color: #fafafa;
+        }
+
+        input[type="url"]:focus,
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3);
+            outline: none;
+        }
+
+        input[type="text"]::placeholder {
+            color: #52525b;
+        }
+
+        /* Article Load Animation */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-enter {
+            animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div id="app" class="min-h-screen flex flex-col font-ui">
+
+        <!-- Header -->
+        <header class="sticky top-0 bg-[#09090b]/80 backdrop-blur-xl z-10 border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-5">
+                    <!-- Site Title -->
+                    <a href="#" id="logo-link" class="flex items-center space-x-2 cursor-pointer group">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-emerald-500 group-hover:text-emerald-400 transition-colors" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <h1 class="text-xl font-bold text-zinc-100 tracking-tight font-serif">Great Articles to Read
+                        </h1>
+                    </a>
+                    <!-- Navigation -->
+                    <nav class="flex items-center space-x-6">
+                        <ul class="flex items-center space-x-8 text-sm font-medium font-ui">
+                            <li><a href="#" id="nav-home" class="nav-link active">Home</a></li>
+                            <li><a href="#" id="nav-explore" class="nav-link">Explore</a></li>
+                            <li><a href="#" id="nav-about" class="nav-link">About</a></li>
+                            <li>
+                                <a href="#" id="nav-saved" class="nav-link flex items-center gap-1.5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-5-7 5V5z" />
+                                    </svg>
+                                    Saved
+                                    <span id="saved-badge" class="hidden bg-emerald-500 text-black text-[10px] font-bold rounded-full w-4 h-4 items-center justify-center leading-none flex-shrink-0">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <!-- Home Page (Random 5) -->
+            <div id="page-home">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+                    <div class="flex justify-end mb-8 space-x-4">
+                        <button id="refresh-reads-btn"
+                            class="bg-zinc-800 text-zinc-300 border border-white/10 px-6 py-2 rounded-md hover:bg-zinc-700 hover:text-white custom-focus-ring transition-all-smooth flex items-center justify-center space-x-2 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span>Refresh My Reads</span>
+                        </button>
+                        <button id="random-read-btn"
+                            class="accent-bg text-white px-6 py-2 rounded-md accent-bg-hover custom-focus-ring transition-all-smooth flex items-center justify-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Surprise Me</span>
+                        </button>
+                    </div>
+                    <!-- Hero -->
+                    <div class="mb-14 pt-2">
+                        <p class="text-emerald-500 text-xs font-semibold uppercase tracking-widest mb-5 font-ui">Curated Reading</p>
+                        <h2 class="font-serif text-5xl sm:text-6xl font-bold text-zinc-100 mb-5 leading-tight tracking-tight">
+                            Ideas worth<br><em class="not-italic accent-color">reading twice.</em>
+                        </h2>
+                        <p class="text-zinc-400 text-lg mb-8 max-w-2xl leading-relaxed">
+                            Not the trending, not the ephemeral. Hand-picked essays and stories that earn their place in your memory.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-500">
+                            <span><span class="text-zinc-200 font-semibold" id="stat-count">—</span> articles</span>
+                            <span class="w-1 h-1 rounded-full bg-zinc-700"></span>
+                            <span><span class="text-zinc-200 font-semibold" id="stat-hours">—</span> hrs of reading</span>
+                            <span class="w-1 h-1 rounded-full bg-zinc-700"></span>
+                            <span><span class="text-zinc-200 font-semibold" id="stat-topics">—</span> topics</span>
+                        </div>
+                    </div>
+
+                    <div id="home-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </div>
+
+            <!-- Explore/Filtered Page -->
+            <div id="page-explore" class="hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+                    <h2 id="explore-title" class="text-3xl font-bold text-zinc-100 mb-6 font-serif">The Archive of Good Reading</h2>
+
+                    <!-- Search -->
+                    <div class="relative mb-6">
+                        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <input id="explore-search" type="text" placeholder="Search by title, author, or keyword…"
+                            class="w-full rounded-lg py-3 pl-10 pr-4 text-sm transition-all" style="border: 1px solid rgba(255,255,255,0.08);">
+                    </div>
+
+                    <!-- Time filter -->
+                    <div id="time-filter-controls" class="mb-4 flex flex-wrap gap-3">
+                        <button
+                            class="filter-btn active bg-stone-200 text-stone-700 px-4 py-2 rounded-md hover:bg-stone-300 custom-focus-ring transition-all-smooth text-sm font-medium"
+                            data-filter="all">All</button>
+                        <button
+                            class="filter-btn bg-stone-200 text-stone-700 px-4 py-2 rounded-md hover:bg-stone-300 custom-focus-ring transition-all-smooth text-sm font-medium"
+                            data-filter="short">Short Reads (&lt;5 min)</button>
+                        <button
+                            class="filter-btn bg-stone-200 text-stone-700 px-4 py-2 rounded-md hover:bg-stone-300 custom-focus-ring transition-all-smooth text-sm font-medium"
+                            data-filter="medium">Medium Reads (5-20 min)</button>
+                        <button
+                            class="filter-btn bg-stone-200 text-stone-700 px-4 py-2 rounded-md hover:bg-stone-300 custom-focus-ring transition-all-smooth text-sm font-medium"
+                            data-filter="long">Deep Dives (&gt;20 min)</button>
+                    </div>
+                    <!-- Mood filter -->
+                    <div id="mood-filter-controls" class="mb-8 flex flex-wrap gap-3"></div>
+
+                    <div id="explore-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </div>
+
+            <!-- About Page -->
+            <div id="page-about" class="hidden">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+                    <div class="glass-card p-10 prose prose-style prose-lg text-zinc-400 font-serif">
+                        <h2 class="text-4xl font-bold text-zinc-100 mb-6 font-serif tracking-tight">About This
+                            Collection</h2>
+                        <p class="mb-4">In an internet saturated with fleeting updates and ephemeral content, this
+                            website serves as
+                            a quiet harbor for thoughtful reading. It's a personal repository of articles and essays
+                            that I believe are worth preserving—pieces that are insightful, well-researched, and
+                            beautifully written.</p>
+                        <p class="mb-4">The goal is not to chase the new, but to champion the enduring. The collection
+                            spans topics
+                            from technology and science to psychology and history, united by a common thread: they offer
+                            valuable perspectives that can enrich our understanding of the world and ourselves.</p>
+                        <p class="mb-6">This space is designed to be minimal and distraction-free, encouraging you to
+                            slow down,
+                            reflect, and engage deeply with the text. I hope you discover something here that sparks
+                            your curiosity and stays with you long after you've finished reading.</p>
+                        <p class="font-semibold text-emerald-500 mt-8 font-ui">— A Curator of Reads</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saved Page -->
+            <div id="page-saved" class="hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+                    <h2 class="text-3xl font-bold text-zinc-100 mb-2 font-serif">Saved Articles</h2>
+                    <p class="text-zinc-500 text-sm mb-10">Your personal reading list, stored locally in your browser.</p>
+                    <div id="saved-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-12 border-t border-white/5 bg-[#09090b]">
+            <div
+                class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-sm text-zinc-500 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <p>&copy; <span id="current-year"></span> Great Articles to Read.</p>
+                <div class="flex items-center space-x-6">
+                    <button id="suggest-read-btn"
+                        class="text-emerald-500 hover:text-emerald-400 font-medium transition-colors">Suggest a
+                        Read</button>
+                    <a href="https://www.buymeacoffee.com/vikasgaur" target="_blank" rel="noopener noreferrer">
+                        <img src="https://i.postimg.cc/mZ5YnQ02/bmc.jpg" alt="Buy Me A Coffee"
+                            class="h-[36px] w-auto rounded-lg hover:opacity-80 transition-opacity border border-white/10">
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Suggestion Modal -->
+        <div id="suggestion-modal" class="hidden fixed inset-0 z-20 overflow-y-auto">
+            <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <!-- Backdrop -->
+                <div id="modal-backdrop" class="fixed inset-0 modal-backdrop"></div>
+                <!-- Modal Content -->
+                <div
+                    class="modal-content inline-block align-bottom rounded-xl text-left overflow-hidden shadow-2xl transform sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-white/10">
+                    <form id="suggestion-form" action="https://formspree.io/f/xeokrabn" method="POST">
+                        <div class="p-6 sm:p-8">
+                            <h3 class="text-2xl font-bold text-zinc-100 mb-6 font-serif tracking-tight"
+                                id="modal-title">Suggest an Article</h3>
+
+                            <div class="space-y-5">
+                                <div>
+                                    <label for="article-url"
+                                        class="block text-sm font-medium text-zinc-400 mb-1">Article URL</label>
+                                    <input type="url" name="url" id="article-url" required
+                                        class="block w-full rounded-md py-3 px-4 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm shadow-inner transition-colors">
+                                </div>
+                                <div>
+                                    <label for="article-note" class="block text-sm font-medium text-zinc-400 mb-1">Why
+                                        do you recommend it? (Optional)</label>
+                                    <textarea id="article-note" name="note" rows="4"
+                                        class="block w-full rounded-md py-3 px-4 focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm shadow-inner transition-colors"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-black/20 px-6 py-4 sm:flex sm:flex-row-reverse border-t border-white/5">
+                            <button type="submit"
+                                class="w-full inline-flex justify-center rounded-md px-6 py-2.5 accent-bg text-sm font-semibold text-white accent-bg-hover shadow-lg sm:ml-3 sm:w-auto transition-all">Submit</button>
+                            <button type="button" id="close-modal-btn"
+                                class="mt-3 w-full inline-flex justify-center rounded-md border border-zinc-700 px-6 py-2.5 bg-zinc-800 text-sm font-medium text-zinc-300 hover:bg-zinc-700 hover:text-white sm:mt-0 sm:w-auto transition-all">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- DATA ---
+            const articlesData = [
+                { id: 2, title: "The Psychology of Money", author: "Morgan Housel", source: "Collaborative Fund", url: "https://collabfund.com/blog/the-psychology-of-money/", summary: "A timeless essay on how our relationship with money is more about psychology...", tags: ["psychology", "finance", "behavior"], moodTags: ["Soft Wisdom", "Quick Insight"], year: 2018, wordCount: 2000 },
+                { id: 3, title: "A Brief History of the Corporation", author: "Venkatesh Rao", source: "Ribbonfarm", url: "https://www.ribbonfarm.com/2011/06/08/a-brief-history-of-the-corporation-1600-2100/", summary: "Traces the evolution of the modern corporation...", tags: ["history", "business", "society"], moodTags: ["Foundation Piece", "Weekend Read"], year: 2011, wordCount: 4500 },
+                { id: 4, title: "How to Write Usefully", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/writing44.html", summary: "Practical advice on the art of writing...", tags: ["writing", "communication"], moodTags: ["Quick Insight", "Practical Advice"], year: 2020, wordCount: 1500 },
+                { id: 5, title: "The Inner Ring", author: "C.S. Lewis", source: "Lewis's 1944 Memorial Lecture", url: "https://www.lewissociety.org/innerring/", summary: "A profound warning about the universal human desire to be 'on the inside'...", tags: ["psychology", "philosophy", "society"], moodTags: ["Make You Think", "Timeless"], year: 1944, wordCount: 2500 },
+                { id: 6, title: "Why We Procrastinate", author: "Tim Urban", source: "Wait But Why", url: "https://waitbutwhy.com/2013/10/why-procrastinators-procrastinate.html", summary: "A humorous yet deeply insightful look into the mind of a procrastinator...", tags: ["psychology", "productivity"], moodTags: ["Funny & Smart", "Weekend Read"], year: 2013, wordCount: 5000 },
+                { id: 7, title: "The Unreasonable Effectiveness of Data", author: "A. Halevy, et al.", source: "IEEE Intelligent Systems", url: "https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf", summary: "A seminal paper arguing that, for many complex problems, simple models trained on massive amounts of data...", tags: ["technology", "data-science", "ai"], moodTags: ["Foundation Piece", "Challenging Read"], year: 2009, wordCount: 2200 },
+                { id: 8, title: "How Complex Systems Fail", author: "Richard I. Cook, MD", source: "Cognitive Tech. Lab", url: "https://how.complexsystems.fail/", summary: "A short paper outlining the fundamental properties of complex systems...", tags: ["systems", "psychology", "safety"], moodTags: ["Quick Insight", "Make You Think"], year: 2000, wordCount: 1000 },
+                { id: 9, title: "As We May Think", author: "Vannevar Bush", source: "The Atlantic", url: "https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/", summary: "A visionary 1945 essay that foresaw many aspects of the modern information age...", tags: ["history", "technology", "vision"], moodTags: ["Foundation Piece", "Timeless"], year: 1945, wordCount: 6000 },
+                { id: 10, title: "You and Your Research", author: "Richard Hamming", source: "Bell Communications Research", url: "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html", summary: "A famous talk by the mathematician on why so few scientists make significant contributions...", tags: ["science", "research", "productivity"], moodTags: ["Practical Advice", "Make You Think"], year: 1986, wordCount: 4800 },
+                { id: 11, title: "1,000 True Fans", author: "Kevin Kelly", source: "The Technium", url: "https://kk.org/thetechnium/1000-true-fans/", summary: "The influential idea that creators don't need millions of fans to make a living...", tags: ["creativity", "business", "internet"], moodTags: ["A Dose of Optimism", "Quick Insight"], year: 2008, wordCount: 1800 },
+                { id: 12, title: "Maker's Schedule, Manager's Schedule", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/makersschedule.html", summary: "Explains the two different types of schedules and why meetings are so disruptive...", tags: ["productivity", "work", "management"], moodTags: ["Practical Advice", "Counterintuitive"], year: 2009, wordCount: 1200 },
+                { id: 13, "title": "The Gervais Principle", "author": "Venkatesh Rao", "source": "Ribbonfarm", "url": "https://www.ribbonfarm.com/2009/10/07/the-gervais-principle-or-the-office-according-to-the-office/", "summary": "A provocative and darkly humorous analysis of corporate social dynamics...", "tags": ["psychology", "business", "society"], "moodTags": ["Challenging Read", "Funny & Smart"], "year": 2009, "wordCount": 7000 },
+                { id: 14, "title": "Do Things That Don't Scale", "author": "Paul Graham", "source": "PaulGraham.com", "url": "https://www.paulgraham.com/ds.html", "summary": "A foundational essay for startups arguing that in the early days, founders should do things that are not scalable...", "tags": ["startups", "business", "growth"], "moodTags": ["Foundation Piece", "Practical Advice"], "year": 2013, "wordCount": 1300 },
+                { id: 18, "title": "The Web Is Fucked", "author": "Melvv.net", "source": "Melvv.net", "url": "https://thewebisfucked.com/", "summary": "A critical look at the current state of the web, lamenting the decline of personal websites...", "tags": ["internet", "technology", "society"], "moodTags": ["A Dose of Pessimism", "Make You Think"], "year": 2024, "wordCount": 1500 },
+                { id: 19, "title": "The Busy Trap", "author": "Tim Kreider", "source": "The New York Times", "url": "https://archive.nytimes.com/opinionator.blogs.nytimes.com/2012/06/30/the-busy-trap/", "summary": "An essay arguing that being constantly 'busy' is a form of existential reassurance...", "tags": ["society", "philosophy", "work"], "moodTags": ["Soft Wisdom", "Make You Think"], "year": 2012, "wordCount": 2000 },
+                { id: 20, "title": "Solitude and Leadership", "author": "William Deresiewicz", "source": "The American Scholar", "url": "https://theamericanscholar.org/solitude-and-leadership/", "summary": "A speech to West Point cadets arguing that true leadership requires solitude...", "tags": ["leadership", "philosophy", "education"], "moodTags": ["Make You Think", "Timeless"], "year": 2010, "wordCount": 4500 },
+                { id: 21, "title": "The Case for Doing Nothing", "author": "Olga Mecking", "source": "The New York Times", "url": "https://www.nytimes.com/2019/04/29/smarter-living/the-case-for-doing-nothing.html", "summary": "Exploring the Dutch concept of 'niksen'—the art of doing nothing without a purpose...", "tags": ["wellness", "productivity", "psychology"], "moodTags": ["A Dose of Optimism", "Soft Wisdom"], "year": 2019, "wordCount": 1200 },
+                { id: 23, "title": "This Is Water", "author": "David Foster Wallace", "source": "Kenyon College", "url": "https://fs.blog/david-foster-wallace-this-is-water/", "summary": "A legendary commencement speech about the real value of education...", "tags": ["philosophy", "life", "education"], "moodTags": ["Foundation Piece", "Make You Think"], "year": 2005, "wordCount": 2300 },
+                { id: 39, title: "How To Be Successful", author: "Sam Altman", source: "Sam Altman's Blog", url: "https://blog.samaltman.com/how-to-be-successful", summary: "A concise list of 13 thoughts on how to achieve outlier success.", tags: ["success", "advice", "work"], moodTags: ["Practical Advice", "Quick Insight"], year: 2019, wordCount: 1000 },
+                { id: 40, title: "The Day You Became A Better Writer", author: "Scott Adams", source: "Dilbert Blog", url: "https://dilbertblog.typepad.com/the_dilbert_blog/2007/06/the_day_you_be.html", summary: "Simple, direct advice on how to improve business writing by stripping out unnecessary words.", tags: ["writing", "communication"], moodTags: ["Practical Advice", "Quick Insight"], year: 2007, wordCount: 700 },
+                { id: 41, title: "Hell Yeah or No", author: "Derek Sivers", source: "sivers.org", url: "https://sive.rs/hellyeah", summary: "The simple heuristic for decision-making: if you're not saying 'HELL YEAH!' about something, say no.", tags: ["decision-making", "productivity", "life"], moodTags: ["Soft Wisdom", "Counterintuitive"], year: 2009, wordCount: 400 },
+                { id: 43, title: "The Tail End", author: "Tim Urban", source: "Wait But Why", url: "https://waitbutwhy.com/2015/12/the-tail-end.html", summary: "A short, powerful, and visual reminder of how little time we have left with the people we love.", tags: ["life", "philosophy", "family"], moodTags: ["Make You Think", "A Dose of Pessimism"], year: 2015, wordCount: 900 },
+                { id: 45, title: "Good and Bad Procrastination", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/procrastination.html", summary: "A distinction between procrastinating on small tasks versus putting off work on big, ambitious projects.", tags: ["productivity", "work", "creativity"], moodTags: ["Practical Advice", "Counterintuitive"], year: 2005, wordCount: 1000 },
+                { id: 46, title: "How to Disagree", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/disagree.html", summary: "A hierarchy of disagreement, from name-calling at the bottom to refuting the central point at the top.", tags: ["communication", "thinking", "society"], moodTags: ["Practical Advice", "Make You Think"], year: 2008, wordCount: 800 },
+                { id: 47, title: "The Power of Doing Nothing at All", author: "Leo Babauta", source: "Zen Habits", url: "https://zenhabits.net/the-power-of-doing-nothing-at-all/", summary: "An argument for embracing moments of stillness and non-doing in a world that glorifies being busy.", tags: ["wellness", "productivity", "philosophy"], moodTags: ["Soft Wisdom", "A Dose of Optimism"], year: 2018, wordCount: 600 },
+                { id: 51, title: "The Top of My Todo List", author: "Fred Wilson", source: "AVC", url: "https://avc.com/2011/09/the-top-of-my-todo-list/", summary: "The simple productivity hack of having only one important thing at the top of your to-do list each day.", tags: ["productivity", "work"], moodTags: ["Quick Insight", "Practical Advice"], year: 2011, wordCount: 400 },
+                { id: 52, title: "Chesterton's Fence", author: "G.K. Chesterton", source: "Concept", url: "https://fs.blog/chestertons-fence/", summary: "The principle that one should not reform something until they understand the reasoning behind its initial existence.", tags: ["thinking", "decision-making", "philosophy"], moodTags: ["Timeless", "Make You Think"], year: 1929, wordCount: 600 },
+                { id: 57, title: "Speed matters", author: "James Somers", source: "jsomers.net", url: "https://jsomers.net/blog/speed-matters", summary: "Why being fast at your tools—whether a keyboard or a chef's knife—is a superpower that compounds over time.", tags: ["productivity", "work", "technology"], moodTags: ["Practical Advice", "Make You Think"], year: 2017, wordCount: 1050 },
+                { id: 59, title: "How will you measure your life?", author: "Clayton M. Christensen", source: "Harvard Business Review", url: "https://hbr.org/2010/07/how-will-you-measure-your-life", summary: "Applying business principles to find meaning in one's personal life.", tags: ["life", "philosophy", "work"], moodTags: ["Make You Think", "Soft Wisdom"], year: 2010, wordCount: 4000 },
+                { id: 60, title: "The Economic Possibilities for our Grandchildren", author: "John Maynard Keynes", source: "Essays in Persuasion", url: "https://www.gutenberg.org/files/66324/66324-h/66324-h.htm", summary: "A 1930 essay predicting that by 2030, capital growth and technological progress would lead to a 15-hour work week.", tags: ["economics", "future", "society"], moodTags: ["Foundation Piece", "Timeless"], year: 1930, wordCount: 3500 },
+                { id: 65, title: "The Laws of Thermodynamics", author: "C.P. Snow", source: "The Two Cultures", url: "https://en.wikipedia.org/wiki/The_Two_Cultures", summary: "An argument that understanding the Second Law of Thermodynamics is as important as reading Shakespeare.", tags: ["science", "education", "philosophy"], moodTags: ["Foundation Piece", "Make You Think"], year: 1959, wordCount: 2500 },
+                { id: 66, title: "How to Live", author: "Derek Sivers", source: "sivers.org", url: "https://sive.rs/h", summary: "A collection of 27 conflicting pieces of advice on how to live, illustrating there's no single right way.", tags: ["life", "philosophy", "advice"], moodTags: ["Soft Wisdom", "Counterintuitive"], year: 2021, wordCount: 1000 },
+                { id: 67, title: "The Power of the Marginal", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/marginal.html", summary: "Why great discoveries are often made by outsiders or in fields that are considered unimportant.", tags: ["creativity", "innovation", "startups"], moodTags: ["Make You Think", "Counterintuitive"], year: 2006, wordCount: 1800 },
+                { id: 70, title: "The Responsibility of Intellectuals", author: "Noam Chomsky", source: "The New York Review of Books", url: "https://chomsky.info/19670223/", summary: "A classic argument that intellectuals have a responsibility to speak the truth and expose lies.", tags: ["politics", "philosophy", "responsibility"], moodTags: ["Foundation Piece", "Challenging Read"], year: 1967, wordCount: 12000 },
+                { id: 30, title: "The Cathedral and the Bazaar", author: "Eric S. Raymond", source: "Self-published", url: "http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/", summary: "A seminal essay on software engineering and open-source...", tags: ["open-source", "programming", "technology"], moodTags: ["Foundation Piece", "Weekend Read"], year: 1999, wordCount: 11000 },
+                { id: 31, title: "How People Get Rich Now", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/richnow.html", summary: "An analysis of the shift in wealth creation from large, slow corporations to fast-moving technology startups...", tags: ["business", "startups", "wealth"], moodTags: ["Make You Think", "Practical Advice"], year: 2019, wordCount: 4000 },
+                { id: 32, title: "Status as a Service (SaaS)", author: "Eugene Wei", source: "Remains of the Day", url: "https://www.eugenewei.com/blog/2019/2/19/status-as-a-service", summary: "A compelling theory that social networks are best understood as 'Status as a Service' businesses...", tags: ["social-media", "psychology", "business"], moodTags: ["Make You Think", "Challenging Read"], year: 2019, wordCount: 12000 },
+                { id: 34, title: "How to Do Great Work", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/greatwork.html", summary: "An expansive essay on the ingredients for doing exceptional work...", tags: ["work", "productivity", "creativity"], moodTags: ["Practical Advice", "Weekend Read"], year: 2023, wordCount: 15000 },
+                { id: 37, title: "The End of History?", author: "Francis Fukuyama", source: "The National Interest", url: "https://www.jstor.org/stable/24027184", summary: "The highly influential and controversial 1989 essay arguing that the end of the Cold War signaled the end of mankind's ideological evolution...", tags: ["history", "politics", "philosophy"], moodTags: ["Foundation Piece", "Challenging Read"], year: 1989, wordCount: 10000 },
+                { id: 38, title: "What You'll Wish You'd Known", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/hs.html", summary: "Advice to high school students, encouraging them to not worry about predefined paths...", tags: ["advice", "life", "work"], moodTags: ["Soft Wisdom", "Practical Advice"], year: 2005, wordCount: 3000 },
+                { id: 79, title: "They're Made out of Meat", author: "Terry Bisson", source: "OMNI Magazine", url: "https://www.mit.edu/people/dpolicar/writing/prose/text/thinkingMeat.html", summary: "A classic sci-fi short story presented as a dialogue between two aliens who are horrified and baffled to discover that humans—an intelligent, space-faring race—are made entirely of meat.", tags: ["science-fiction", "philosophy", "humor", "aliens"], moodTags: ["Funny & Smart", "Make You Think", "Counterintuitive"], year: 1991, dateAdded: "2025-06-23", wordCount: 750 },
+                { id: 80, title: "Three pages a day", author: "Oliver Burkeman", source: "oliverburkeman.com", url: "https://www.oliverburkeman.com/three-pages", summary: "A short, powerful reflection on the 'morning pages' practice and how the simple act of filling three pages a day can unlock creativity and clarity by lowering the bar for what counts as 'writing'.", tags: ["writing", "creativity", "productivity", "journaling"], moodTags: ["Quick Insight", "Practical Advice", "Soft Wisdom"], year: 2023, dateAdded: "2025-06-24", wordCount: 650 },
+                { id: 81, title: "Hackers & Painters", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/hp.html", summary: "A seminal essay arguing that computer programming is a creative act, more akin to painting or architecture than to mathematics, and exploring the mindset of the 'hacker' as a maker.", tags: ["programming", "creativity", "technology", "philosophy"], moodTags: ["Foundation Piece", "Make You Think", "Weekend Read"], year: 2003, dateAdded: "2025-06-24", wordCount: 7500 },
+                { id: 82, title: "Keep Your Identity Small", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/identity.html", summary: "An argument that the more labels you attach to your identity, the harder it is to think clearly, as you'll be forced to defend those labels rather than pursue the truth.", tags: ["thinking", "identity", "psychology", "bias"], moodTags: ["Counterintuitive", "Make You Think", "Soft Wisdom"], year: 2009, dateAdded: "2025-06-24", wordCount: 1100 },
+                { id: 83, title: "First Principles: The Building Blocks of True Knowledge", author: "Farnam Street", source: "fs.blog", url: "https://fs.blog/first-principles/", summary: "A clear explanation of the mental model of 'first-principles thinking'—the practice of breaking down complex problems into their most basic, foundational elements to reason up from there.", tags: ["thinking", "mental-models", "learning", "decision-making"], moodTags: ["Practical Advice", "Foundation Piece"], year: 2018, dateAdded: "2025-06-24", wordCount: 2400 },
+                { id: 84, title: "How to Do What You Love", author: "Paul Graham", source: "PaulGraham.com", url: "https://www.paulgraham.com/love.html", summary: "Practical advice that challenges the simple directive to 'do what you love,' suggesting instead to find a field that you're interested in and to work hard to become good at it.", tags: ["work", "life", "advice", "career"], moodTags: ["Practical Advice", "Soft Wisdom"], year: 2006, dateAdded: "2025-06-24", wordCount: 3500 },
+                { id: 85, title: "Pmarca Guide to Personal Productivity", author: "Marc Andreessen", source: "Pmarchive", url: "https://pmarchive.com/guide_to_personal_productivity.html", summary: "A practical and opinionated guide to productivity from Netscape founder Marc Andreessen, focusing on structured days, managing a to-do list, and the importance of sleep.", tags: ["productivity", "work", "advice"], moodTags: ["Practical Advice", "Quick Insight"], year: 2007, dateAdded: "2025-06-24", wordCount: 2200 },
+                { id: 86, title: "The AI Revolution: The Road to Superintelligence", author: "Tim Urban", source: "Wait But Why", url: "https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html", summary: "The first part of a two-part epic that explains the concepts of Artificial Narrow Intelligence, Artificial General Intelligence, and Artificial Superintelligence in a deeply engaging and accessible way.", tags: ["ai", "technology", "future", "society"], moodTags: ["Foundation Piece", "Challenging Read", "Weekend Read"], year: 2015, dateAdded: "2025-06-24", wordCount: 16000 },
+                { id: 87, title: "The Passion Trap", author: "Cal Newport", source: "Calnewport.com", url: "https://www.calnewport.com/blog/2012/09/09/the-passion-trap-how-the-search-for-your-lifes-work-is-making-your-working-life-miserable/", summary: "An argument against the 'follow your passion' mindset, proposing that passion is a side effect of mastery, not a cause, and that focusing on getting good at something valuable is a better career strategy.", tags: ["career", "work", "psychology", "advice"], moodTags: ["Counterintuitive", "Practical Advice"], year: 2012, dateAdded: "2025-06-24", wordCount: 1500 },
+                { id: 88, title: "The Calculus of Grit", author: "Angela Duckworth", source: "Character Lab", url: "https://characterlab.org/the-calculus-of-grit/", summary: "A short, powerful essay by the author of 'Grit' on the mathematical nature of achievement, where talent is a starting point but effort counts twice.", tags: ["success", "psychology", "productivity", "learning"], moodTags: ["Quick Insight", "Make You Think", "A Dose of Optimism"], year: 2016, dateAdded: "2025-06-24", wordCount: 600 },
+                { id: 89, title: "Writing Wednesdays: Resistance and Self-Loathing", author: "Steven Pressfield", source: "stevenpressfield.com", url: "https://stevenpressfield.com/2021/04/writing-wednesdays-resistance-and-self-loathing/", summary: "A concise and powerful reflection on the internal forces of 'Resistance' that all creators face, and the importance of showing up to do the work regardless of how you feel.", tags: ["writing", "creativity", "psychology", "work"], moodTags: ["Practical Advice", "Soft Wisdom"], year: 2021, dateAdded: "2025-06-24", wordCount: 500 },
+                { id: 90, title: "Mental Models: The Best Way to Make Intelligent Decisions", author: "Farnam Street", source: "fs.blog", url: "https://fs.blog/mental-models/", summary: "A comprehensive introduction to the concept of mental models, arguing that building a 'latticework' of diverse models is the key to making better decisions in a complex world.", tags: ["thinking", "mental-models", "learning", "decision-making"], moodTags: ["Foundation Piece", "Weekend Read"], year: 2018, dateAdded: "2025-06-24", wordCount: 5000 },
+                { id: 91, title: "The Psychology of Human Misjudgment", author: "Charlie Munger", source: "Farnam Street", url: "https://fs.blog/psychology-human-misjudgment/", summary: "A transcript of the legendary speech by Charlie Munger outlining the key cognitive biases that lead to poor judgment in business and life.", tags: ["psychology", "bias", "thinking", "decision-making"], moodTags: ["Foundation Piece", "Challenging Read"], year: 2005, dateAdded: "2025-06-24", wordCount: 11000 },
+                { id: 92, title: "The Ones Who Walk Away from Omelas", author: "Ursula K. Le Guin", source: "Public Library", url: "https://shsdavisapes.pbworks.com/f/Omelas.pdf", summary: "A famous short story that presents a powerful moral allegory about a utopian city whose happiness depends on the perpetual misery of a single child.", tags: ["fiction", "philosophy", "ethics", "society"], moodTags: ["Make You Think", "Timeless", "Challenging Read"], year: 1973, dateAdded: "2025-06-24", wordCount: 2000 },
+                { id: 93, title: "A Declaration of the Independence of Cyberspace", author: "John Perry Barlow", source: "Electronic Frontier Foundation", url: "https://www.eff.org/cyberspace-independence", summary: "A foundational, rebellious manifesto from 1996 declaring the internet a new, sovereign space free from the governments of the 'industrial world.'", tags: ["internet", "history", "politics", "philosophy"], moodTags: ["Foundation Piece", "Timeless"], year: 1996, dateAdded: "2025-06-24", wordCount: 850 },
+                { id: 94, title: "Why Women Aren't Funny", author: "Christopher Hitchens", source: "Vanity Fair", url: "https://www.vanityfair.com/culture/2007/01/hitchens200701", summary: "A famously provocative essay that argues, from an evolutionary psychology perspective, that men have a greater need to be funny than women, sparking widespread debate.", tags: ["humor", "society", "psychology", "writing"], moodTags: ["Challenging Read", "Counterintuitive"], year: 2007, dateAdded: "2025-06-24", wordCount: 2700 }
+            ];
+
+            // --- Global State ---
+            let allArticles = [];
+            let savedIds = new Set(JSON.parse(localStorage.getItem('saved-articles') || '[]'));
+            let activeTimeFilter = 'all';
+            let activeMoodFilter = null;
+            let exploreSearchQuery = '';
+
+            // --- DOM Elements ---
+            const homeArticlesGrid = document.getElementById('home-articles-grid');
+            const exploreArticlesGrid = document.getElementById('explore-articles-grid');
+            const savedArticlesGrid = document.getElementById('saved-articles-grid');
+            const exploreTitle = document.getElementById('explore-title');
+            const moodFilterControls = document.getElementById('mood-filter-controls');
+            const exploreSearch = document.getElementById('explore-search');
+            const randomReadBtn = document.getElementById('random-read-btn');
+            const refreshReadsBtn = document.getElementById('refresh-reads-btn');
+            const logoLink = document.getElementById('logo-link');
+            const navHome = document.getElementById('nav-home');
+            const navExplore = document.getElementById('nav-explore');
+            const navAbout = document.getElementById('nav-about');
+            const navSaved = document.getElementById('nav-saved');
+            const savedBadge = document.getElementById('saved-badge');
+            const pageHome = document.getElementById('page-home');
+            const pageExplore = document.getElementById('page-explore');
+            const pageAbout = document.getElementById('page-about');
+            const pageSaved = document.getElementById('page-saved');
+            const suggestionModal = document.getElementById('suggestion-modal');
+            const suggestReadBtn = document.getElementById('suggest-read-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+
+            // --- Bookmark helpers ---
+
+            function updateSavedBadge() {
+                const count = savedIds.size;
+                if (count > 0) {
+                    savedBadge.textContent = count > 9 ? '9+' : count;
+                    savedBadge.classList.remove('hidden');
+                    savedBadge.classList.add('flex');
+                } else {
+                    savedBadge.classList.add('hidden');
+                    savedBadge.classList.remove('flex');
+                }
+            }
+
+            function toggleSaved(id, btn) {
+                if (savedIds.has(id)) {
+                    savedIds.delete(id);
+                    btn.classList.remove('text-emerald-500');
+                    btn.classList.add('text-zinc-600');
+                    btn.querySelector('svg').setAttribute('fill', 'none');
+                    btn.title = 'Save for later';
+                } else {
+                    savedIds.add(id);
+                    btn.classList.remove('text-zinc-600');
+                    btn.classList.add('text-emerald-500');
+                    btn.querySelector('svg').setAttribute('fill', 'currentColor');
+                    btn.title = 'Remove from saved';
+                }
+                localStorage.setItem('saved-articles', JSON.stringify([...savedIds]));
+                updateSavedBadge();
+                // If the saved page is currently shown, refresh it
+                if (!pageSaved.classList.contains('hidden')) {
+                    renderSavedPage();
+                }
+            }
+
+            // --- Article rendering ---
+
+            function renderArticles(articlesToRender, gridContainer) {
+                gridContainer.innerHTML = '';
+
+                if (articlesToRender.length === 0) {
+                    gridContainer.innerHTML = '<p class="col-span-full text-center text-zinc-500 py-12">No articles found.</p>';
+                    return;
+                }
+
+                articlesToRender.forEach((article, index) => {
+                    const articleCard = document.createElement('div');
+                    articleCard.className = 'glass-card p-6 flex flex-col animate-enter';
+                    articleCard.style.animationDelay = `${index * 0.07}s`;
+
+                    const topicTagsHTML = (article.tags || []).map(tag =>
+                        `<button class="tag-button text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full font-ui" data-tag="${tag}">${tag}</button>`
+                    ).join('');
+
+                    const moodTagsHTML = (article.moodTags || []).map(tag =>
+                        `<button class="tag-button mood-tag-button text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded-full font-ui" data-tag="${tag}">${tag}</button>`
+                    ).join('');
+
+                    const readingTime = Math.ceil(article.wordCount / 225);
+                    const isBookmarked = savedIds.has(article.id);
+
+                    articleCard.innerHTML = `
+                        <div class="flex-grow">
+                            <p class="text-sm text-zinc-400 mb-2 font-ui flex items-center gap-2">
+                                <span>${article.source}</span>
+                                <span class="w-1 h-1 rounded-full bg-zinc-600"></span>
+                                <span>${article.year}</span>
+                                <span class="w-1 h-1 rounded-full bg-zinc-600"></span>
+                                <span><span class="text-emerald-500">⏱</span> ${readingTime} min read</span>
+                            </p>
+                            <h2 class="text-xl font-bold text-zinc-100 mb-3 font-serif leading-tight">${article.title}</h2>
+                            <p class="text-base mb-5 leading-relaxed text-zinc-400 font-serif">${article.summary}</p>
+                        </div>
+                        <div class="mt-auto pt-5 border-t border-white/5">
+                            <div class="flex flex-wrap mb-4 gap-y-2">${topicTagsHTML}${moodTagsHTML}</div>
+                            <div class="flex justify-between items-center mt-2">
+                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-500 hover:text-emerald-400 font-ui transition-colors">
+                                    Read Full Article
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                </a>
+                                <button class="bookmark-btn p-1.5 rounded-md hover:bg-white/5 transition-colors ${isBookmarked ? 'text-emerald-500' : 'text-zinc-600'}" data-id="${article.id}" title="${isBookmarked ? 'Remove from saved' : 'Save for later'}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="${isBookmarked ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-5-7 5V5z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    gridContainer.appendChild(articleCard);
+                });
+            }
+
+            function renderSavedPage() {
+                const saved = allArticles.filter(a => savedIds.has(a.id));
+                if (saved.length === 0) {
+                    savedArticlesGrid.innerHTML = `
+                        <div class="col-span-full flex flex-col items-center justify-center py-20 text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-zinc-800 mb-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-5-7 5V5z" />
+                            </svg>
+                            <p class="text-zinc-400 text-lg font-medium mb-2">No saved articles yet</p>
+                            <p class="text-zinc-600 text-sm">Click the bookmark icon on any article to add it here.</p>
+                        </div>
+                    `;
+                } else {
+                    renderArticles(saved, savedArticlesGrid);
+                }
+            }
+
+            function displayRandomArticles() {
+                const shuffled = [...allArticles].sort(() => 0.5 - Math.random());
+                renderArticles(shuffled.slice(0, 5), homeArticlesGrid);
+            }
+
+            function openRandomRead() {
+                if (allArticles.length > 0) {
+                    const randomArticle = allArticles[Math.floor(Math.random() * allArticles.length)];
+                    window.open(randomArticle.url, '_blank', 'noopener,noreferrer');
+                }
+            }
+
+            // --- Explore filters ---
+
+            function applyExploreFilters() {
+                const WPM = 225;
+                let filtered = allArticles;
+
+                if (activeTimeFilter === 'short') {
+                    filtered = filtered.filter(a => (a.wordCount / WPM) < 5);
+                } else if (activeTimeFilter === 'medium') {
+                    filtered = filtered.filter(a => { const t = a.wordCount / WPM; return t >= 5 && t <= 20; });
+                } else if (activeTimeFilter === 'long') {
+                    filtered = filtered.filter(a => (a.wordCount / WPM) > 20);
+                }
+
+                if (activeMoodFilter) {
+                    filtered = filtered.filter(a => a.moodTags && a.moodTags.includes(activeMoodFilter));
+                }
+
+                if (exploreSearchQuery.trim()) {
+                    const q = exploreSearchQuery.toLowerCase();
+                    filtered = filtered.filter(a =>
+                        a.title.toLowerCase().includes(q) ||
+                        a.author.toLowerCase().includes(q) ||
+                        (a.summary && a.summary.toLowerCase().includes(q))
+                    );
+                }
+
+                renderArticles(filtered, exploreArticlesGrid);
+            }
+
+            function renderMoodFilters() {
+                const allMoods = new Set();
+                allArticles.forEach(a => (a.moodTags || []).forEach(m => allMoods.add(m)));
+                moodFilterControls.innerHTML = '';
+
+                const allBtn = document.createElement('button');
+                allBtn.className = `filter-btn ${!activeMoodFilter ? 'active' : ''} px-4 py-2 rounded-md custom-focus-ring transition-all-smooth text-sm font-medium`;
+                allBtn.textContent = 'All Moods';
+                allBtn.dataset.mood = '';
+                moodFilterControls.appendChild(allBtn);
+
+                [...allMoods].sort().forEach(mood => {
+                    const btn = document.createElement('button');
+                    btn.className = `filter-btn ${activeMoodFilter === mood ? 'active' : ''} px-4 py-2 rounded-md custom-focus-ring transition-all-smooth text-sm font-medium`;
+                    btn.textContent = mood;
+                    btn.dataset.mood = mood;
+                    moodFilterControls.appendChild(btn);
+                });
+            }
+
+            function filterByTag(tag) {
+                // Reset all explore filter state
+                activeTimeFilter = 'all';
+                activeMoodFilter = null;
+                exploreSearchQuery = '';
+                exploreSearch.value = '';
+                document.querySelectorAll('#time-filter-controls .filter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector('#time-filter-controls .filter-btn[data-filter="all"]').classList.add('active');
+                renderMoodFilters();
+
+                const filteredArticles = allArticles.filter(article =>
+                    (article.tags && article.tags.includes(tag)) ||
+                    (article.moodTags && article.moodTags.includes(tag))
+                );
+                exploreTitle.textContent = `Tagged: "${tag}"`;
+                renderArticles(filteredArticles, exploreArticlesGrid);
+                switchPage('explore');
+            }
+
+            function switchPage(pageName) {
+                pageHome.classList.add('hidden');
+                pageExplore.classList.add('hidden');
+                pageAbout.classList.add('hidden');
+                pageSaved.classList.add('hidden');
+                [navHome, navExplore, navAbout, navSaved].forEach(nav => nav.classList.remove('active'));
+
+                if (pageName === 'explore') {
+                    pageExplore.classList.remove('hidden');
+                    navExplore.classList.add('active');
+                } else if (pageName === 'about') {
+                    pageAbout.classList.remove('hidden');
+                    navAbout.classList.add('active');
+                } else if (pageName === 'saved') {
+                    pageSaved.classList.remove('hidden');
+                    navSaved.classList.add('active');
+                    renderSavedPage();
+                } else {
+                    pageHome.classList.remove('hidden');
+                    navHome.classList.add('active');
+                }
+                window.scrollTo(0, 0);
+            }
+
+            function openModal() { suggestionModal.classList.remove('hidden'); }
+            function closeModal() { suggestionModal.classList.add('hidden'); }
+
+            function initHeroStats() {
+                const totalMinutes = allArticles.reduce((sum, a) => sum + Math.ceil(a.wordCount / 225), 0);
+                const allTopics = new Set(allArticles.flatMap(a => a.tags || []));
+                document.getElementById('stat-count').textContent = allArticles.length;
+                document.getElementById('stat-hours').textContent = Math.round(totalMinutes / 60);
+                document.getElementById('stat-topics').textContent = allTopics.size;
+            }
+
+            function initializeApp() {
+                allArticles = articlesData.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                displayRandomArticles();
+                initHeroStats();
+                renderMoodFilters();
+                updateSavedBadge();
+
+                randomReadBtn.addEventListener('click', openRandomRead);
+                refreshReadsBtn.addEventListener('click', displayRandomArticles);
+
+                // Search input
+                exploreSearch.addEventListener('input', function () {
+                    exploreSearchQuery = this.value;
+                    exploreTitle.textContent = 'The Archive of Good Reading';
+                    applyExploreFilters();
+                });
+
+                // Nav links
+                logoLink.addEventListener('click', (e) => { e.preventDefault(); switchPage('home'); });
+                navHome.addEventListener('click', (e) => { e.preventDefault(); switchPage('home'); });
+                navAbout.addEventListener('click', (e) => { e.preventDefault(); switchPage('about'); });
+                navSaved.addEventListener('click', (e) => { e.preventDefault(); switchPage('saved'); });
+                navExplore.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    exploreTitle.textContent = 'The Archive of Good Reading';
+                    activeTimeFilter = 'all';
+                    activeMoodFilter = null;
+                    exploreSearchQuery = '';
+                    exploreSearch.value = '';
+                    document.querySelectorAll('#time-filter-controls .filter-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelector('#time-filter-controls .filter-btn[data-filter="all"]').classList.add('active');
+                    renderMoodFilters();
+                    applyExploreFilters();
+                    switchPage('explore');
+                });
+
+                // Modal
+                suggestReadBtn.addEventListener('click', openModal);
+                closeModalBtn.addEventListener('click', closeModal);
+                modalBackdrop.addEventListener('click', closeModal);
+
+                // Delegated click handler
+                document.body.addEventListener('click', function (event) {
+                    // Bookmark button
+                    const bookmarkBtn = event.target.closest('.bookmark-btn');
+                    if (bookmarkBtn) {
+                        event.preventDefault();
+                        toggleSaved(parseInt(bookmarkBtn.dataset.id), bookmarkBtn);
+                        return;
+                    }
+
+                    // Mood filter
+                    const moodBtn = event.target.closest('#mood-filter-controls .filter-btn');
+                    if (moodBtn) {
+                        activeMoodFilter = moodBtn.dataset.mood || null;
+                        document.querySelectorAll('#mood-filter-controls .filter-btn').forEach(b => b.classList.remove('active'));
+                        moodBtn.classList.add('active');
+                        exploreTitle.textContent = 'The Archive of Good Reading';
+                        applyExploreFilters();
+                        return;
+                    }
+
+                    // Time filter
+                    const timeBtn = event.target.closest('#time-filter-controls .filter-btn');
+                    if (timeBtn) {
+                        activeTimeFilter = timeBtn.dataset.filter;
+                        document.querySelectorAll('#time-filter-controls .filter-btn').forEach(b => b.classList.remove('active'));
+                        timeBtn.classList.add('active');
+                        exploreTitle.textContent = 'The Archive of Good Reading';
+                        applyExploreFilters();
+                        return;
+                    }
+
+                    // Topic / mood tag on card
+                    const tagButton = event.target.closest('.tag-button');
+                    if (tagButton) {
+                        filterByTag(tagButton.dataset.tag);
+                    }
+                });
+            }
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            initializeApp();
+
+        });
+    </script>
+</body>
+
+</html>
